@@ -7,11 +7,15 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @Entity
-public class Cliente extends Pessoa{
+@Table(name = "tb_cliente")
+public class Cliente{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String nome;
+    private String cpf;
+    private String telefone;
 
 
     //private Animal animal;
