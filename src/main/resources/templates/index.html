@@ -18,13 +18,37 @@
                 <td>E-mail</td>
                 <td>Função</td>
             </tr>
-            <tr th:each="i : ${lista}">
-                <td th:text="${i.id}"></td>
-                <td th:text="${i.nome}"></td>
-                <td th:text="${i.cpf}" ></td>
-                <td th:text="${i.email}" ></td>
-                <td th:text="${i.funcao}" ></td>
+            <tr th:each="funcionario : ${lista}">
+                <td th:text="${funcionario.id}"></td>
+                <td th:text="${funcionario.nome}"></td>
+                <td th:text="${funcionario.cpf}" ></td>
+                <td th:text="${funcionario.email}" ></td>
+                <td th:text="${funcionario.funcao}" ></td>
+                <td><a th:href="@{/funcionario/{id}/excluir(id=${funcionario.id})}">Excluir</a></td>
             </tr>
         </table>
+        <form th:action="@{/funcionario/salvar}" th:object="${elemento}" method="post">
+            <table>
+                <tr>
+                    <td>
+                        <input placeholder="Nome" type="text" th:field="*{nome}">
+                    <td></td>
+                    <td>
+                        <input placeholder="CPF" type="text" th:field="*{cpf}">
+                    </td>
+                    <td>
+                        <input placeholder="E-mail" type="text" th:field="*{email}" >
+                    </td>
+                    <td>
+                        <input placeholder="Função" type="text" th:field="*{funcao}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button type="submit">Salvar</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
     </body>
 </html>

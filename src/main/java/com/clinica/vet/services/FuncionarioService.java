@@ -2,7 +2,6 @@ package com.clinica.vet.services;
 
 import com.clinica.vet.entities.Funcionario;
 import com.clinica.vet.repositories.FuncionarioRepository;
-import org.apache.logging.log4j.util.Strings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,4 +26,7 @@ public class FuncionarioService {
         repository.save(funcionario);
     }
 
+    public void delete(Funcionario funcionario) {
+        repository.delete(funcionario);
+    }
 }

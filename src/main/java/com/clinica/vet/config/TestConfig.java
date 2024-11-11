@@ -15,10 +15,10 @@ public class TestConfig implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        Funcionario f1 = new Funcionario(null, "Ian", "000.000.000-00", "ian@gmail.com", "Recepcionista");
-        Funcionario f2 = new Funcionario(null, "Nicoly", "000.000.000-00", "nicoly@gmail.com", "Recepcionista");
+//        Funcionario f1 = new Funcionario(null, "Ian", "000.000.000-00", "ian@gmail.com", "Recepcionista");
+//        Funcionario f2 = new Funcionario(null, "Nicoly", "000.000.000-00", "nicoly@gmail.com", "Recepcionista");
 
-        funcionarioRepository.save(f1);
-        funcionarioRepository.save(f2);
+//        funcionarioRepository.save(f1);
+//        funcionarioRepository.save(f2);
     }
 }

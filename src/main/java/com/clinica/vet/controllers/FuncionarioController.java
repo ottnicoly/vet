@@ -4,9 +4,7 @@ import com.clinica.vet.entities.Funcionario;
 import com.clinica.vet.services.FuncionarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -17,15 +15,31 @@ public class FuncionarioController {
     private FuncionarioService service;
 
     @GetMapping
-    public ModelAndView index(){
+    public ModelAndView index() {
         var mv = new ModelAndView("index");
-        mv.addObject("lista",service.findAll());
+        mv.addObject("lista", service.findAll());
+        mv.addObject("elemento", new Funcionario());
         return mv;
     }
 
-    @PostMapping
-    public void save(Funcionario funcionario){
-        service.save(funcionario);
+    @PostMapping("/salvar")
+    public ModelAndView salvar(@ModelAttribute("elemento") Funcionario funcionario){
+        try {
+            service.save(funcionario);
+            return new ModelAndView("redirect:/funcionario");
+        } catch (Exception e) {
+            var mv = new ModelAndView("index");
+            mv.addObject("elemento",funcionario);
+            return mv;
+        }
     }
 
+    @GetMapping("/{id}/excluir")
+    public ModelAndView excluir(@PathVariable long id) {
+        var opt = service.findById(id);
+        if(opt.isPresent()) {
+            service.delete(opt.get());
+        }
+        return new ModelAndView("redirect:/funcionario");
+    }
 }
