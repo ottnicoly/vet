@@ -1,28 +1,30 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Index</title>
 </head>
     <body>
-
-        <h1>Funcionarios</h1>
+        <h1>Funcionários</h1>
         <br>
         <table th:if="${lista.size()} > 0">
-
             <tr>
-                <td>ID</td><td>Nome</td>
+                <td>ID</td>
+                <td>Nome</td>
+                <td>Cpf</td>
+                <td>E-mail</td>
+                <td>Função</td>
             </tr>
-
-            <tr th:each="e : ${lista}">
-                <td th:text="${e.id}"></td>
-                <td  th:text="${e.nome}"></td>
+            <tr th:each="i : ${lista}">
+                <td th:text="${i.id}"></td>
+                <td th:text="${i.nome}"></td>
+                <td th:text="${i.cpf}" ></td>
+                <td th:text="${i.email}" ></td>
+                <td th:text="${i.funcao}" ></td>
             </tr>
-
         </table>
-
     </body>
 </html>
