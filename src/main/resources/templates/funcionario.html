@@ -18,16 +18,16 @@
                 <td>E-mail</td>
                 <td>Função</td>
             </tr>
-            <tr th:each="funcionario : ${lista}">
-                <td th:text="${funcionario.id}"></td>
-                <td th:text="${funcionario.nome}"></td>
-                <td th:text="${funcionario.cpf}" ></td>
-                <td th:text="${funcionario.email}" ></td>
-                <td th:text="${funcionario.funcao}" ></td>
-                <td><a th:href="@{/funcionario/{id}/excluir(id=${funcionario.id})}">Excluir</a></td>
+            <tr th:each="funcionarios : ${lista}">
+                <td th:text="${funcionarios.id}"></td>
+                <td th:text="${funcionarios.nome}"></td>
+                <td th:text="${funcionarios.cpf}" ></td>
+                <td th:text="${funcionarios.email}" ></td>
+                <td th:text="${funcionarios.funcao}" ></td>
+                <td><a th:href="@{/funcionarios/{id}/excluir(id=${funcionarios.id})}">Excluir</a></td>
             </tr>
         </table>
-        <form th:action="@{/funcionario/salvar}" th:object="${elemento}" method="post">
+        <form th:action="@{/funcionarios/salvar}" th:object="${elemento}" method="post">
             <table>
                 <tr>
                     <td>

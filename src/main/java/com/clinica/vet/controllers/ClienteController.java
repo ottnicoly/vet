@@ -1,35 +1,35 @@
 package com.clinica.vet.controllers;
 
-import com.clinica.vet.entities.Funcionario;
-import com.clinica.vet.services.FuncionarioService;
+import com.clinica.vet.entities.Cliente;
+import com.clinica.vet.services.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping( "/funcionarios")
-public class FuncionarioController {
+@RequestMapping("/clientes")
+public class ClienteController {
 
     @Autowired
-    private FuncionarioService service;
+    private ClienteService service;
 
     @GetMapping
     public ModelAndView index() {
-        var mv = new ModelAndView("index");
+        var mv = new ModelAndView("cliente");
         mv.addObject("lista", service.findAll());
-        mv.addObject("elemento", new Funcionario());
+        mv.addObject("elemento", new Cliente());
         return mv;
     }
 
     @PostMapping("/salvar")
-    public ModelAndView salvar(@ModelAttribute("elemento") Funcionario funcionario){
+    public ModelAndView salvar(@ModelAttribute("elemento") Cliente cliente){
         try {
-            service.save(funcionario);
-            return new ModelAndView("redirect:/funcionarios");
+            service.save(cliente);
+            return new ModelAndView("redirect:/clientes");
         } catch (Exception e) {
-            var mv = new ModelAndView("index");
-            mv.addObject("elemento",funcionario);
+            var mv = new ModelAndView("cliente");
+            mv.addObject("elemento",cliente);
             return mv;
         }
     }
@@ -40,6 +40,7 @@ public class FuncionarioController {
         if(opt.isPresent()) {
             service.delete(opt.get());
         }
-        return new ModelAndView("redirect:/funcionarios");
+        return new ModelAndView("redirect:/clientes");
     }
+
 }

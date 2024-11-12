@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Index</title>
+</head>
+<body>
+<h1>Funcionários</h1>
+<br>
+<table th:if="${lista.size()} > 0">
+    <tr>
+        <td>ID</td>
+        <td>Nome</td>
+        <td>Cpf</td>
+        <td>Telefone</td>
+    </tr>
+    <tr th:each="clientes : ${lista}">
+        <td th:text="${clientes.id}"></td>
+        <td th:text="${clientes.nome}"></td>
+        <td th:text="${clientes.cpf}" ></td>
+        <td th:text="${clientes.telefone}" ></td>
+        <td><a th:href="@{/clientes/{id}/excluir(id=${clientes.id})}">Excluir</a></td>
+    </tr>
+</table>
+<form th:action="@{/clientes/salvar}" th:object="${elemento}" method="post">
+    <table>
+        <tr>
+            <td>
+                <input placeholder="Nome" type="text" th:field="*{nome}">
+            <td></td>
+            <td>
+                <input placeholder="CPF" type="text" th:field="*{cpf}">
+            </td>
+            <td>
+                <input placeholder="Telefone" type="text" th:field="*{telefone}" >
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button type="submit">Salvar</button>
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
