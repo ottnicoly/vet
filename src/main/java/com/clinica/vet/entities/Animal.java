@@ -14,6 +14,6 @@ public class Animal {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
-    private String raca;
+    private String especie;
 
 }

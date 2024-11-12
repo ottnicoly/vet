@@ -16,7 +16,7 @@ public class FuncionarioController {
 
     @GetMapping
     public ModelAndView index() {
-        var mv = new ModelAndView("index");
+        var mv = new ModelAndView("funcionario");
         mv.addObject("lista", service.findAll());
         mv.addObject("elemento", new Funcionario());
         return mv;
@@ -28,7 +28,7 @@ public class FuncionarioController {
             service.save(funcionario);
             return new ModelAndView("redirect:/funcionarios");
         } catch (Exception e) {
-            var mv = new ModelAndView("index");
+            var mv = new ModelAndView("funcionario");
             mv.addObject("elemento",funcionario);
             return mv;
         }

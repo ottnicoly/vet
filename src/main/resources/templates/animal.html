@@ -19,7 +19,7 @@
     <tr th:each="animais : ${lista}">
         <td th:text="${animais.id}"></td>
         <td th:text="${animais.nome}"></td>
-        <td th:text="${animais.raca}" ></td>
+        <td th:text="${animais.especie}" ></td>
         <td><a th:href="@{/animais/{id}/excluir(id=${animais.id})}">Excluir</a></td>
     </tr>
 </table>
@@ -28,9 +28,9 @@
         <tr>
             <td>
                 <input placeholder="Nome" type="text" th:field="*{nome}">
-            <td></td>
+            </td>
             <td>
-                <input placeholder="Raça" type="text" th:field="*{raca}">
+                <input placeholder="Espécie" type="text" th:field="*{especie}">
             </td>
         </tr>
         <tr>
