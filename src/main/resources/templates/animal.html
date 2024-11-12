@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Index</title>
+</head>
+<body>
+<h1>Funcionários</h1>
+<br>
+<table th:if="${lista.size()} > 0">
+    <tr>
+        <td>ID</td>
+        <td>Nome</td>
+        <td>Raça</td>
+    </tr>
+    <tr th:each="animais : ${lista}">
+        <td th:text="${animais.id}"></td>
+        <td th:text="${animais.nome}"></td>
+        <td th:text="${animais.raca}" ></td>
+        <td><a th:href="@{/animais/{id}/excluir(id=${animais.id})}">Excluir</a></td>
+    </tr>
+</table>
+<form th:action="@{/animais/salvar}" th:object="${elemento}" method="post">
+    <table>
+        <tr>
+            <td>
+                <input placeholder="Nome" type="text" th:field="*{nome}">
+            <td></td>
+            <td>
+                <input placeholder="Raça" type="text" th:field="*{raca}">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button type="submit">Salvar</button>
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
