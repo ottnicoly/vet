@@ -5,40 +5,67 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Index</title>
+    <link href="../static/animal.css" th:href="@{/animal.css} " rel="stylesheet" />
+    <title>Animal</title>
 </head>
 <body>
-<h1>Animais</h1>
-<br>
-<table th:if="${lista.size()} > 0">
-    <tr>
-        <td>ID</td>
-        <td>Nome</td>
-        <td>Raça</td>
-    </tr>
-    <tr th:each="animais : ${lista}">
-        <td th:text="${animais.id}"></td>
-        <td th:text="${animais.nome}"></td>
-        <td th:text="${animais.especie}" ></td>
-        <td><a th:href="@{/animais/{id}/excluir(id=${animais.id})}">Excluir</a></td>
-    </tr>
-</table>
-<form th:action="@{/animais/salvar}" th:object="${elemento}" method="post">
-    <table>
-        <tr>
-            <td>
-                <input placeholder="Nome" type="text" th:field="*{nome}">
-            </td>
-            <td>
-                <input placeholder="Espécie" type="text" th:field="*{especie}">
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <button type="submit">Salvar</button>
-            </td>
-        </tr>
-    </table>
-</form>
+    <nav class="navegacao">
+
+        <div class="nav-logo">
+            <h1>HOSPITAL VET</h1>
+            <p>Clínica Veterinária</p>
+        </div>
+
+        <div class="nav-link">
+            <a class="link" href="">PÁGINA INICIAL</a>
+        </div>
+
+    </nav>
+
+<main>
+    <div class="container">
+        <h1>Animais</h1>
+        <br>
+    <!--    <table th:if="${lista.size()} > 0">-->
+    <!--        <tr>-->
+    <!--            <td>ID</td>-->
+    <!--            <td>Nome</td>-->
+    <!--            <td>Raça</td>-->
+    <!--            <td>Dono</td>-->
+    <!--        </tr>-->
+    <!--        <tr th:each="animais : ${lista}">-->
+    <!--            <td th:text="${animais.id}"></td>-->
+    <!--            <td th:text="${animais.nome}"></td>-->
+    <!--            <td th:text="${animais.especie}" ></td>-->
+    <!--            <td th:text="${animais.dono}" ></td>-->
+    <!--            <td><a th:href="@{/animais/{id}/excluir(id=${animais.id})}">Excluir</a></td>-->
+    <!--        </tr>-->
+    <!--    </table>-->
+        
+        <form th:action="@{/animais/salvar}" th:object="${elemento}" method="post">
+            <div class="container-form">
+
+                <div class="form"> 
+                    <input class="form-input" placeholder="Nome" type="text" th:field="*{nome}">
+                </div>
+
+                <div class="form"> 
+                    <input class="form-input" placeholder="Espécie" type="text" th:field="*{especie}">
+                </div>
+
+                <div class="form"> 
+                    <input class="form-input" placeholder="Cliente" type="text" th:field="*{dono}">
+                </div>
+
+                <div class="form">
+                    <button type="submit">Salvar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</main>
+<footer class="footer">
+
+</footer>
 </body>
 </html>

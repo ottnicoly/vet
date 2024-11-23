@@ -1,6 +1,7 @@
 package com.clinica.vet.entities;
 
 import jakarta.persistence.*;
+import lombok.Cleanup;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -15,5 +16,8 @@ public class Animal {
     private Long id;
     private String nome;
     private String especie;
+
+    @ManyToOne
+    private Cliente dono;
 
 }

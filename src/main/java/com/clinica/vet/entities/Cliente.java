@@ -17,7 +17,4 @@ public class Cliente{
     private String cpf;
     private String telefone;
 
-
-    //private Animal animal;
-
 }
