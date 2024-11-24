@@ -1,7 +1,6 @@
 package com.clinica.vet.config;
 
-import com.clinica.vet.entities.Funcionario;
-import com.clinica.vet.repositories.FuncionarioRepository;
+import com.clinica.vet.core.repositories.FuncionarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;

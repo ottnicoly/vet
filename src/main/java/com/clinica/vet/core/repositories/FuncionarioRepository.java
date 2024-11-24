@@ -1,6 +1,6 @@
-package com.clinica.vet.repositories;
+package com.clinica.vet.core.repositories;
 
-import com.clinica.vet.entities.Funcionario;
+import com.clinica.vet.core.entities.Funcionario;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

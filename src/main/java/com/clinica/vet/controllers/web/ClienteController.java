@@ -1,7 +1,7 @@
-package com.clinica.vet.controllers;
+package com.clinica.vet.controllers.web;
 
-import com.clinica.vet.entities.Cliente;
-import com.clinica.vet.services.ClienteService;
+import com.clinica.vet.core.entities.Cliente;
+import com.clinica.vet.core.services.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;

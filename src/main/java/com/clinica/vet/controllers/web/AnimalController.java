@@ -1,19 +1,18 @@
-package com.clinica.vet.controllers;
+package com.clinica.vet.controllers.web;
 
-import com.clinica.vet.entities.Animal;
-import com.clinica.vet.entities.Cliente;
-import com.clinica.vet.services.AnimalService;
+import com.clinica.vet.core.entities.Animal;
+import com.clinica.vet.core.services.AnimalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping("animais")
+@RequestMapping("/animais")
 public class AnimalController {
 
     @Autowired
-    AnimalService service;
+    private AnimalService service;
 
     @GetMapping
     public ModelAndView index() {

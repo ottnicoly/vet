@@ -1,7 +1,7 @@
-package com.clinica.vet.services;
+package com.clinica.vet.core.services;
 
-import com.clinica.vet.entities.Funcionario;
-import com.clinica.vet.repositories.FuncionarioRepository;
+import com.clinica.vet.core.entities.Funcionario;
+import com.clinica.vet.core.repositories.FuncionarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

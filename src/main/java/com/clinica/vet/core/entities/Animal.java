@@ -1,7 +1,6 @@
-package com.clinica.vet.entities;
+package com.clinica.vet.core.entities;
 
 import jakarta.persistence.*;
-import lombok.Cleanup;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
