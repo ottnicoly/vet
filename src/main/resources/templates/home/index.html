@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="pt-br" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" th:href="@{../static/css/estilo.css}">
+    <title>Clinica Vet</title>
+</head>
+<body>
+
+<nav class="navegacao">
+    <div class="nav-logo">
+        <img th:src="@{/images/logo.png}" alt="Logo">
+    </div>
+</nav>
+
+<h1>Home</h1>
+<p>Área restrita para usuários logados. </p>
+<p>Bem-vindo: <span sec:authentication="name"></span></p>
+
+<ol>
+    <li><a th:href="@{/logout}">Deslogar</a></li>
+</ol>
+<div sec:authorize="isAuthenticated()">
+    Conteudo que somente é mostrado para usuários logados.
+</div>
+
+<footer class="footer"></footer>
+
+</body>
+</html>

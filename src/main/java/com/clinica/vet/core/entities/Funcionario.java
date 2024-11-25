@@ -17,7 +17,11 @@ public class Funcionario {
     private Long id;
     private String nome;
     private String cpf;
-    private String email;
-    private String funcao;
 
+    @Column(unique = true, nullable = false)
+    private String email;
+
+    private String senha;
+    private String funcao;
+    private boolean ativo = true;
 }

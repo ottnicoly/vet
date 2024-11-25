@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<!--    <link rel="stylesheet" th:href="@{/css/estilo.css}">-->
+    <title>Clinica Vet</title>
+</head>
+<body>
+
+<h1>Tela de Login</h1>
+<p>Faça o seu login.</p>
+
+<form th:action="@{/login}" method="post">
+    <label for="username">E-mail</label>
+    <input type="text" id="username" name="username" placeholder="Digite o nome de usuário" required/>
+
+    <label for="password">Senha</label>
+    <input type="password" id="password" name="password" placeholder="Digite a senha" required/>
+
+    <button type="submit">Entrar</button>
+</form>
+
+<div th:if="${param.error}">Usuário ou senha incorretos</div>
+
+<footer class="footer"></footer>
+</body>
+</html>

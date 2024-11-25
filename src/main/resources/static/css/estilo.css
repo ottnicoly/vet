@@ -4,6 +4,7 @@ body {
     background-color: #f4f4f4;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 .navegacao {
@@ -12,34 +13,38 @@ body {
     justify-content: space-between;
     background-color: #751821;
     width: 100%;
-    height: 80px;
+    height: 140px;
 }
 
 .nav-logo {
     margin: 60px;
 }
 
-.nav-logo h1 {
-    width: 180px;
-    background-color: white;
-    color: black;
-    margin: 0;
+.nav-logo img {
+    width: 391px;
+    height: 140px;
 }
 
-.nav-logo p {
-    color: white;
-    margin-top: 0;
-    margin-bottom: 0;
-    margin-left: 10%;
-    padding: 2px;
-}
+/*.nav-logo h1 {*/
+/*    width: 180px;*/
+/*    background-color: white;*/
+/*    color: black;*/
+/*    margin: 0;*/
+/*}*/
+
+/*.nav-logo p {*/
+/*    color: white;*/
+/*    margin-top: 0;*/
+/*    margin-bottom: 0;*/
+/*    margin-left: 10%;*/
+/*    padding: 2px;*/
+/*}*/
 
 .nav-link {
     margin: 60px;
 }
 
 .link {
-    
     color: white;
     font-size: 20px;
     text-decoration: none;
@@ -60,7 +65,7 @@ h1 {
     color: #333;
 }
 
-.container-form { 
+.container-form {
     width: 100%;
     padding: 20px;
 }
@@ -97,7 +102,7 @@ button:hover {
 
 .footer {
     background-color: #751821;
-    margin-top: 273px;
+    margin-top: 214px;
     width: 100%;
     height: 60px;
 }
