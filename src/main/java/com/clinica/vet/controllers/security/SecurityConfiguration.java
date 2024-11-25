@@ -68,6 +68,6 @@ public class SecurityConfiguration {
 
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
-        return web -> web.debug(false).ignoring().requestMatchers("/css/**", "/js/**", "/img/**", "/lib/**", "/favicon.ico");
+        return web -> web.debug(false).ignoring().requestMatchers("/css/**", "/js/**", "/images/**", "/lib/**", "/favicon.ico");
     }
 }

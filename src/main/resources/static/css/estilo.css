@@ -1,7 +1,6 @@
-/* Estilo geral da página */
 body {
     font-family: Arial, sans-serif;
-    background-color: #ffffff;
+    background-color: #f4f4f9;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -59,37 +58,6 @@ body {
 
 .nav-lista .sair {
     margin-left: 30px;
-}
-
-/* Estilo para os campos de entrada */
-.form-input {
-    width: 90%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-}
-
-/* Estilo para o botão de envio */
-button {
-    background-color: #751821;
-    border: 1px solid #751821;
-    border-radius: 4px;
-    box-shadow: rgba(0, 0, 0, .1) 0 2px 4px 0;
-    box-sizing: border-box;
-    color: #ffffff;
-    cursor: pointer;
-    font-size: 20px;
-    font-weight: 400;
-    outline: none;
-    outline: 0;
-    padding: 10px 25px;
-    text-align: center;
-    transform: translateY(0);
-    transition: transform 150ms, box-shadow 150ms;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
 }
 
 button:hover {
