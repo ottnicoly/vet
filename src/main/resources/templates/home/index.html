@@ -1,33 +1,62 @@
 <!doctype html>
-<html lang="pt-br" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" th:href="@{../static/css/estilo.css}">
+    <link rel="stylesheet" th:href="@{/css/estilo.css}">
+    <link rel="stylesheet" th:href="@{/css/home.css}">
     <title>Clinica Vet</title>
 </head>
 <body>
-
 <nav class="navegacao">
     <div class="nav-logo">
         <img th:src="@{/images/logo.png}" alt="Logo">
     </div>
+    <ul class="nav-lista">
+        <li><a th:href="@{/u/home}" class="ativo">PÁGINA INICIAL</a></li>
+        <li><a th:href="@{/clientes}">CLIENTES</a></li>
+        <li><a th:href="@{/animais}">ANIMAIS</a></li>
+        <li><a th:href="@{/logout}" class="sair">SAIR</a></li>
+    </ul>
 </nav>
 
-<h1>Home</h1>
-<p>Área restrita para usuários logados. </p>
-<p>Bem-vindo: <span sec:authentication="name"></span></p>
-
-<ol>
-    <li><a th:href="@{/logout}">Deslogar</a></li>
-</ol>
-<div sec:authorize="isAuthenticated()">
-    Conteudo que somente é mostrado para usuários logados.
+<div class="nova-consulta">
+    <form th:action="@{/consultas}">
+        <input type="submit" value="Nova Consulta" />
+    </form>
 </div>
 
-<footer class="footer"></footer>
+<div class="links">
+    <a th:href="@{/exames}" class="image-container">
+        <img th:src="@{/images/img1.png}" alt="Exames">
+        <div class="overlay">
+            <h1>EXAMES</h1>
+        </div>
+    </a>
+    <a th:href="@{/funcionarios}" class="image-container">
+        <img th:src="@{/images/img2.png}" alt="Funcionários">
+        <div class="overlay">
+            <h1>FUNCIONÁRIOS</h1>
+        </div>
+    </a>
+    <a th:href="@{/}" class="image-container">
+        <img th:src="@{/images/img3.png}" alt="Gráfico">
+        <div class="overlay">
+            <h1>GRÁFICO</h1>
+        </div>
+    </a>
+    <a th:href="@{/}" class="image-container">
+        <img th:src="@{/images/img4.png}" alt="Relatório">
+        <div class="overlay">
+            <h1>RELATÓRIOS</h1>
+        </div>
+    </a>
+</div>
 
+<footer class="footer">
+    <p>	&copy; 2024 Hospital VET. Todos os direitos reservados </p>
+</footer>
 </body>
 </html>
