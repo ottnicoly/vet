@@ -50,13 +50,13 @@ public class SecurityConfiguration {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(authorizationManagerRequestMatcherRegistry ->
-                        authorizationManagerRequestMatcherRegistry
-                                .requestMatchers("/").permitAll()
+                                authorizationManagerRequestMatcherRegistry
+                                .requestMatchers("/login").permitAll()
                                 .requestMatchers("/login").permitAll()
                                 .anyRequest().authenticated())
                 .formLogin(form -> form
                         .loginPage("/login")
-                        .defaultSuccessUrl("/u/home", true))
+                        .defaultSuccessUrl("/home", true))
                 .logout(logout -> logout
                         .invalidateHttpSession(true)
                         .clearAuthentication(true)

@@ -27,6 +27,10 @@ public class FuncionarioService {
     }
 
     public void save(Funcionario funcionario) {
+        if (funcionario.getSenha() != null && !funcionario.getSenha().isEmpty()) {
+            String senhaCriptografada = passwordEncoder.encode(funcionario.getSenha());
+            funcionario.setSenha(senhaCriptografada);
+        }
         repository.save(funcionario);
     }
 
