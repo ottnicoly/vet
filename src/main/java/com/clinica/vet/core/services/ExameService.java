@@ -1,12 +1,11 @@
 package com.clinica.vet.core.services;
 
-
-import com.clinica.vet.core.entities.Consulta;
 import com.clinica.vet.core.entities.Exame;
 import com.clinica.vet.core.repositories.ExameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,5 +31,8 @@ public class ExameService {
         repository.delete(exame);
     }
 
+    public List<Exame> findByData(LocalDate data) {
+        return repository.findByData(data);
+    }
 
 }

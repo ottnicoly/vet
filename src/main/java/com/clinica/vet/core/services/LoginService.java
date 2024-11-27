@@ -19,7 +19,6 @@ public class LoginService implements UserDetailsService {
         var opt = repository.findByEmailAndAtivoTrue(nomeusuario);
         if(opt.isEmpty()) {throw new UsernameNotFoundException(nomeusuario);}
         var usuario = opt.get();
-        System.out.println(usuario);
         return new org.springframework.security.core.userdetails.User(
                 usuario.getEmail(),
                 usuario.getSenha(),

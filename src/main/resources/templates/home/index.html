@@ -12,12 +12,11 @@
 <body>
 <nav class="navegacao">
     <div class="nav-logo">
-        <img th:src="@{/images/logo.png}" alt="Logo">
+        <a th:href="@{/home}"><img th:src="@{/images/logo.png}" alt="Logo"></a>
     </div>
     <ul class="nav-lista">
-        <li><a th:href="@{/u/home}" class="ativo">PÁGINA INICIAL</a></li>
-        <li><a th:href="@{/clientes}">CLIENTES</a></li>
-        <li><a th:href="@{/animais}">ANIMAIS</a></li>
+        <li><a th:href="@{/home}" class="ativo">PÁGINA INICIAL</a></li>
+        <li><a th:href="@{/funcionarios}">FUNCIONÁRIOS</a></li>
         <li><a th:href="@{/logout}" class="sair">SAIR</a></li>
     </ul>
 </nav>
@@ -29,28 +28,28 @@
 </div>
 
 <div class="links">
+    <a th:href="@{/clientes}" class="image-container">
+        <img th:src="@{/images/img1.png}" alt="Clientes">
+        <div class="overlay">
+            <h1>CLIENTES</h1>
+        </div>
+    </a>
+    <a th:href="@{/animais}" class="image-container">
+        <img th:src="@{/images/img2.png}" alt="Animais">
+        <div class="overlay">
+            <h1>ANIMAIS</h1>
+        </div>
+    </a>
     <a th:href="@{/exames}" class="image-container">
-        <img th:src="@{/images/img1.png}" alt="Exames">
+        <img th:src="@{/images/img3.png}" alt="Exames">
         <div class="overlay">
             <h1>EXAMES</h1>
         </div>
     </a>
-    <a th:href="@{/funcionarios}" class="image-container">
-        <img th:src="@{/images/img2.png}" alt="Funcionários">
-        <div class="overlay">
-            <h1>FUNCIONÁRIOS</h1>
-        </div>
-    </a>
     <a th:href="@{/}" class="image-container">
-        <img th:src="@{/images/img3.png}" alt="Gráfico">
+        <img th:src="@{/images/img4.png}" alt="Gráfico">
         <div class="overlay">
             <h1>GRÁFICO</h1>
-        </div>
-    </a>
-    <a th:href="@{/}" class="image-container">
-        <img th:src="@{/images/img4.png}" alt="Relatório">
-        <div class="overlay">
-            <h1>RELATÓRIOS</h1>
         </div>
     </a>
 </div>

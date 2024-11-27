@@ -5,67 +5,69 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="../static/animal.css" th:href="@{/animal.css} " rel="stylesheet"/>
-    <title>Animal</title>
+    <link rel="stylesheet" th:href="@{/css/formulario.css}">
+    <link rel="stylesheet" th:href="@{/css/estilo.css}">
+    <title>Clinica Vet</title>
 </head>
 <body>
 <nav class="navegacao">
-
     <div class="nav-logo">
-        <h1>HOSPITAL VET</h1>
-        <p>Clínica Veterinária</p>
+        <a th:href="@{/home}"><img th:src="@{/images/logo.png}" alt="Logo"></a>
     </div>
-
-    <div class="nav-link">
-        <a class="link" href="">PÁGINA INICIAL</a>
-    </div>
-
+    <ul class="nav-lista">
+        <li><a th:href="@{/home}" class="ativo">PÁGINA INICIAL</a></li>
+        <li><a th:href="@{/funcionarios}">FUNCIONÁRIOS</a></li>
+        <li><a th:href="@{/logout}" class="sair">SAIR</a></li>
+    </ul>
 </nav>
-
 <main>
-    <div class="container">
-        <h1>Animais</h1>
-        <br>
-        <!--    <table th:if="${lista.size()} > 0">-->
-        <!--        <tr>-->
-        <!--            <td>ID</td>-->
-        <!--            <td>Nome</td>-->
-        <!--            <td>Raça</td>-->
-        <!--            <td>Dono</td>-->
-        <!--        </tr>-->
-        <!--        <tr th:each="animais : ${lista}">-->
-        <!--            <td th:text="${animais.id}"></td>-->
-        <!--            <td th:text="${animais.nome}"></td>-->
-        <!--            <td th:text="${animais.especie}" ></td>-->
-        <!--            <td th:text="${animais.dono}" ></td>-->
-        <!--            <td><a th:href="@{/animais/{id}/excluir(id=${animais.id})}">Excluir</a></td>-->
-        <!--        </tr>-->
-        <!--    </table>-->
-
-        <form th:action="@{/animais/salvar}" th:object="${elemento}" method="post">
-            <div class="container-form">
-
-                <div class="form">
-                    <input class="form-input" placeholder="Nome" type="text" th:field="*{nome}">
-                </div>
-
-                <div class="form">
-                    <input class="form-input" placeholder="Espécie" type="text" th:field="*{especie}">
-                </div>
-
-                <div class="form">
-                    <input class="form-input" placeholder="Cliente" type="text" th:field="*{dono}">
-                </div>
-
-                <div class="form">
-                    <button type="submit">Salvar</button>
-                </div>
+    <div class="formulario-container">
+        <div class="formulario">
+            <h1>Animais</h1>
+            <!--    <table th:if="${lista.size()} > 0">-->
+            <!--        <tr>-->
+            <!--            <td>ID</td>-->
+            <!--            <td>Nome</td>-->
+            <!--            <td>Raça</td>-->
+            <!--            <td>Dono</td>-->
+            <!--        </tr>-->
+            <!--        <tr th:each="animais : ${lista}">-->
+            <!--            <td th:text="${animais.id}"></td>-->
+            <!--            <td th:text="${animais.nome}"></td>-->
+            <!--            <td th:text="${animais.especie}" ></td>-->
+            <!--            <td th:text="${animais.dono}" ></td>-->
+            <!--            <td><a th:href="@{/animais/{id}/excluir(id=${animais.id})}">Excluir</a></td>-->
+            <!--        </tr>-->
+            <!--    </table>-->
+            <div id="popup" class="mensagem-erro" style="display: none">
+                O campo 'Dono' deve ser um número.
             </div>
-        </form>
+            <form th:action="@{/animais/salvar}" th:object="${elemento}" method="post"
+                  onsubmit="return validarNumero()">
+                <div class="container-form">
+                    <div class="form">
+                        <label for="nome">Nome</label>
+                        <input type="text" id="nome" name="nome" placeholder="Nome do PET" required th:field="*{nome}">
+                    </div>
+                    <div class="form">
+                        <label for="especie">Espécie</label>
+                        <input type="text" id="especie" name="password" placeholder="Ex: (Gato, Cachorro)" required th:field="*{especie}">
+                    </div>
+                    <div class="form">
+                        <label for="dono">Dono</label>
+                        <input type="text" id="dono" name="password" placeholder="Somente números" required th:field="*{dono}">
+                    </div>
+                    <div class="form">
+                        <button type="submit">Salvar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
 </main>
 <footer class="footer">
-
+    <p> &copy; 2024 Hospital VET. Todos os direitos reservados </p>
 </footer>
+<script th:src="@{/js/script.js}"></script>
 </body>
 </html>

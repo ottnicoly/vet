@@ -10,6 +10,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.time.LocalDate;
+import java.util.List;
+
 @Controller
 @RequestMapping("/exames")
 public class ExameController {
@@ -66,5 +69,25 @@ public class ExameController {
         return new ModelAndView("redirect:/exames");
     }
 
+    @GetMapping("/exames")
+    public ModelAndView index(@RequestParam(value = "dataFiltro", required = false) String dataFiltro) {
+        var mv = new ModelAndView("exame");
+
+        List<Exame> exames;
+        if (dataFiltro != null && !dataFiltro.isEmpty()) {
+            // Converte a String para LocalDate
+            LocalDate data = LocalDate.parse(dataFiltro);
+            // Filtra os exames pela data recebida
+            exames = service.findByData(data);
+        } else {
+            exames = service.findAll();
+        }
+
+        mv.addObject("lista", exames);
+        mv.addObject("funcionarios", funcionarioService.findAll());
+        mv.addObject("animais", animalService.findAll());
+        mv.addObject("elemento", new Exame());
+        return mv;
+    }
 
 }
