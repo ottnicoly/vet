@@ -1,6 +1,5 @@
 package com.clinica.vet.controllers.web;
 
-import com.clinica.vet.core.dto.GraficoDTO;
 import com.clinica.vet.core.services.GraficoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

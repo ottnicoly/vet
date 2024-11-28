@@ -14,4 +14,6 @@ public class GraficoDTO {
     private List<String> labels;
     private List<String> valores;
     private List<String> cores;
+
+
 }

@@ -20,8 +20,6 @@
     </ul>
 </nav>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<br>
 <div>
     <canvas id="chart">
     </canvas>
@@ -34,7 +32,7 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script th:inline="javascript">
     let entidade = /*[[${grafico}]]*/ [];
-    console.log(entidade);
+    console.log("Dados recebidos para o gráfico:", entidade);
 </script>
 
 <script>
