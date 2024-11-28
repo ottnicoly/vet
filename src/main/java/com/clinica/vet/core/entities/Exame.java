@@ -24,7 +24,7 @@ public class Exame {
 
     @ManyToOne
     private Funcionario funcionario;
+
     @ManyToOne
     private Animal animal;
-
 }

@@ -5,9 +5,28 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link th:href="@{/css/secao.css}" rel="stylesheet">
     <link th:href="@{/css/estilo.css}" rel="stylesheet"/>
-    <link th:href="@{/css/formulario.css}" rel="stylesheet">
     <title>Cliente</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Campo de Data
+            const dataInput = document.querySelector('.form-input[placeholder="Data"]');
+            if (dataInput) {
+                const agora = new Date();
+                // Formata para o padrão ISO-8601 (yyyy-MM-dd)
+                dataInput.value = agora.toISOString().split('T')[0];
+            }
+
+            // Campo de Hora
+            const horaInput = document.querySelector('.form-input[placeholder="Hora"]');
+            if (horaInput) {
+                const agora = new Date();
+                // Formata para o padrão ISO-8601 (HH:mm:ss)
+                horaInput.value = agora.toTimeString().split(' ')[0];
+            }
+        });
+    </script>
 </head>
 <body>
 <nav class="navegacao">
@@ -22,57 +41,59 @@
 </nav>
 <main>
     <div class="formulario-container">
-        <div class="formulario">
-            <h1>Consulta</h1>
-            <br>
-            <table th:if="${lista.size()} > 0">
-                <tr>
-                    <td>ID</td>
-                    <td>Data</td>
-                    <td>Hora</td>
-                    <td>Cliente</td>
-                    <td>Animal</td>
-                    <td>Especie</td>
-                    <td>Funcionario</td>
-                </tr>
-                <tr th:each="consultas: ${lista}">
-                    <td th:text="${consultas.id}"></td>
-                    <td th:text="${consultas.data}"></td>
-                    <td th:text="${consultas.hora}"></td>
-                    <td th:text="${consultas.animal.getDono().getNome()}"></td>
-                    <td th:text="${consultas.animal.getNome()}"></td>
-                    <td th:text="${consultas.animal.getEspecie()}"></td>
-                    <td th:text="${consultas.funcionario.getNome()}"></td>
-                    <td><a th:href="@{/consultas/{id}/excluir(id=${consultas.id})}">Excluir</a></td>
-                </tr>
-            </table>
-            <form th:action="@{/consultas/salvar}" th:object="${elemento}" method="post">
-                <div class="container-form">
-                    <div class="form">
-                        <input class="form-input" placeholder="Data" type="text" th:field="*{data}">
-                    </div>
-                    <div class="form">
-                        <input class="form-input" placeholder="Hora" type="text" th:field="*{hora}">
-                    </div>
-                    <select name="animalId" id="animal">
-                        <option value="" disabled selected>Selecione um animal</option>
-                        <th:block th:each="animal : ${animais}">
-                            <option th:value="${animal.id}" th:text="${animal.nome}"></option>
-                        </th:block>
-                    </select>
-                    <select name="funcionarioId" id="funcionario">
-                        <option value="" disabled selected>Selecione um funcionário</option>
-                        <th:block th:each="funcionario : ${funcionarios}">
-                            <option th:value="${funcionario.id}" th:text="${funcionario.nome}"></option>
-                        </th:block>
-                    </select>
-                    <div class="form">
-                        <button type="submit">Salvar</button>
-                    </div>
-                </div>
-
-            </form>
-        </div>
+        <h1>Consulta</h1>
+        <form th:action="@{/consultas/salvar}" th:object="${elemento}" method="post">
+            <div class="form">
+                <input class="form-input" placeholder="Data" type="text" th:field="*{data}">
+            </div>
+            <div class="form">
+                <input class="form-input" placeholder="Hora" type="text" th:field="*{hora}">
+            </div>
+            <select name="animalId" id="animal">
+                <option value="" disabled selected>Selecione um animal</option>
+                <th:block th:each="animal : ${animais}">
+                    <option th:value="${animal.id}" th:text="${animal.nome}"></option>
+                </th:block>
+            </select>
+            <select name="funcionarioId" id="funcionario">
+                <option value="" disabled selected>Selecione um funcionário</option>
+                <th:block th:each="funcionario : ${funcionarios}">
+                    <option th:value="${funcionario.id}" th:text="${funcionario.nome}"></option>
+                </th:block>
+            </select>
+            <div class="form">
+                <button type="submit">Salvar</button>
+            </div>
+        </form>
+    </div>
+    <div class="secao-container">
+        <form class="filtro" th:action="@{/consultas}" method="get">
+            <div class="form">
+                <input class="form-input" type="date" required name="dataFiltro">
+                <button type="submit">Filtrar</button>
+            </div>
+        </form>
+        <table th:if="${lista.size()} > 0">
+            <tr>
+                <td>ID</td>
+                <td>Data</td>
+                <td>Hora</td>
+                <td>Cliente</td>
+                <td>Animal</td>
+                <td>Especie</td>
+                <td>Funcionario</td>
+            </tr>
+            <tr th:each="consultas: ${lista}">
+                <td th:text="${consultas.id}"></td>
+                <td th:text="${consultas.data}"></td>
+                <td th:text="${consultas.hora}"></td>
+                <td th:text="${consultas.animal.getDono().getNome()}"></td>
+                <td th:text="${consultas.animal.getNome()}"></td>
+                <td th:text="${consultas.animal.getEspecie()}"></td>
+                <td th:text="${consultas.funcionario.getNome()}"></td>
+                <td><a th:href="@{/consultas/{id}/excluir(id=${consultas.id})}">Excluir</a></td>
+            </tr>
+        </table>
     </div>
 </main>
 <footer class="footer">

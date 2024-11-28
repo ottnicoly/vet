@@ -51,7 +51,13 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(authorizationManagerRequestMatcherRegistry ->
                         authorizationManagerRequestMatcherRegistry
                                 .requestMatchers("/", "/login").permitAll()
-                                .anyRequest().authenticated())
+                                .anyRequest()
+
+                                // Permite qualquer request sem estar autenticado
+                                .permitAll())
+                                
+                                // Permite apenas requests de usuários autenticados
+                                // .authenticated()
                 .formLogin(form -> form
                         .loginPage("/login")
                         .defaultSuccessUrl("/home", true))

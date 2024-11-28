@@ -1,6 +1,5 @@
 package com.clinica.vet.controllers.web;
 
-
 import com.clinica.vet.core.entities.Exame;
 import com.clinica.vet.core.services.AnimalService;
 import com.clinica.vet.core.services.ExameService;
@@ -27,14 +26,32 @@ public class ExameController {
     private AnimalService animalService;
 
     @GetMapping
-    public ModelAndView index() {
+    public ModelAndView index(@RequestParam(value = "dataFiltro", required = false) String dataFiltro) {
         var mv = new ModelAndView("exame");
-        mv.addObject("lista", service.findAll());
+
+        List<Exame> exames;
+        if (dataFiltro != null && !dataFiltro.isEmpty()) {
+            try {
+                // Converte a String para LocalDate
+                LocalDate data = LocalDate.parse(dataFiltro);
+                // Filtra os exames pela data recebida
+                exames = service.findByData(data);
+            } catch (Exception e) {
+                // Se ocorrer erro de conversão, lista todos os exames
+                exames = service.findAll();
+                mv.addObject("error", "Formato de data inválido.");
+            }
+        } else {
+            exames = service.findAll();
+        }
+
+        mv.addObject("lista", exames);
         mv.addObject("funcionarios", funcionarioService.findAll());
         mv.addObject("animais", animalService.findAll());
         mv.addObject("elemento", new Exame());
         return mv;
     }
+
 
     @PostMapping("/salvar")
     public ModelAndView salvar(@RequestParam("animalId") Long animalId ,@RequestParam("funcionarioId") Long funcionarioId, @ModelAttribute("elemento") Exame exame){
@@ -67,27 +84,6 @@ public class ExameController {
             service.delete(opt.get());
         }
         return new ModelAndView("redirect:/exames");
-    }
-
-    @GetMapping("/exames")
-    public ModelAndView index(@RequestParam(value = "dataFiltro", required = false) String dataFiltro) {
-        var mv = new ModelAndView("exame");
-
-        List<Exame> exames;
-        if (dataFiltro != null && !dataFiltro.isEmpty()) {
-            // Converte a String para LocalDate
-            LocalDate data = LocalDate.parse(dataFiltro);
-            // Filtra os exames pela data recebida
-            exames = service.findByData(data);
-        } else {
-            exames = service.findAll();
-        }
-
-        mv.addObject("lista", exames);
-        mv.addObject("funcionarios", funcionarioService.findAll());
-        mv.addObject("animais", animalService.findAll());
-        mv.addObject("elemento", new Exame());
-        return mv;
     }
 
 }

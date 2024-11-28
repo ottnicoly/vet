@@ -27,6 +27,7 @@ public class FuncionarioService {
     }
 
     public void save(Funcionario funcionario) {
+        // Criptografa a senha ao cadastrar
         if (funcionario.getSenha() != null && !funcionario.getSenha().isEmpty()) {
             String senhaCriptografada = passwordEncoder.encode(funcionario.getSenha());
             funcionario.setSenha(senhaCriptografada);
