@@ -70,4 +70,5 @@ body {
     text-align: center;
     margin-top: 214px;
     padding-top: 10px;
+    -webkit-calc(-100% + 40px);
 }

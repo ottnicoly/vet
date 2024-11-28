@@ -98,7 +98,7 @@
                 <td th:text="${exames.data}"></td>
                 <td th:text="${exames.hora}"></td>
                 <td th:text="${exames.tipoExame}"></td>
-                <td th:text="${exames.animal.dono.getNome()}"></td>
+                <td th:text="${exames.animal?.dono?.getNome()}">Sem Nome</td>
                 <td th:text="${exames.animal.nome}"></td>
                 <td th:text="${exames.animal.especie}"></td>
                 <td th:text="${exames.funcionario.nome}"></td>
@@ -107,7 +107,7 @@
         </table>
     </div>
 </main>
-<footer class="footer" style="position: relative;">
+<footer class="footer">
     <p> &copy; 2024 Hospital VET. Todos os direitos reservados </p>
 </footer>
 </body>
