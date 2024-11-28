@@ -57,7 +57,7 @@ public class SecurityConfiguration {
                                 .permitAll())
                                 
                                 // Permite apenas requests de usuários autenticados
-                                // .authenticated()
+                                // .authenticated())
                 .formLogin(form -> form
                         .loginPage("/login")
                         .defaultSuccessUrl("/home", true))
