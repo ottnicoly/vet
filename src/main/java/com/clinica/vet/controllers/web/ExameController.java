@@ -32,12 +32,9 @@ public class ExameController {
         List<Exame> exames;
         if (dataFiltro != null && !dataFiltro.isEmpty()) {
             try {
-                // Converte a String para LocalDate
                 LocalDate data = LocalDate.parse(dataFiltro);
-                // Filtra os exames pela data recebida
                 exames = service.findByData(data);
             } catch (Exception e) {
-                // Se ocorrer erro de conversão, lista todos os exames
                 exames = service.findAll();
                 mv.addObject("error", "Formato de data inválido.");
             }

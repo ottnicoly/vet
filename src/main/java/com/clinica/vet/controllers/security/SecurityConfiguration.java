@@ -54,10 +54,10 @@ public class SecurityConfiguration {
                                 .anyRequest()
 
                                 // Permite qualquer request sem estar autenticado
-                                .permitAll())
+                                // .permitAll())
                                 
                                 // Permite apenas requests de usuários autenticados
-                                // .authenticated())
+                                .authenticated())
                 .formLogin(form -> form
                         .loginPage("/login")
                         .defaultSuccessUrl("/home", true))

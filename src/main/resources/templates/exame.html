@@ -78,8 +78,9 @@
     <div class="secao-container">
         <form class="filtro" th:action="@{/exames}" method="get">
             <div class="form">
-                <input class="form-input" type="date" required name="dataFiltro">
+                <input class="form-input" type="date" name="dataFiltro">
                 <button type="submit">Filtrar</button>
+                <button type="submit">Resetar</button>
             </div>
         </form>
         <table th:if="${lista.size()} > 0">

@@ -40,7 +40,7 @@
 }
 
 .filtro button {
-    width: 120px;
+    width: 100px;
 }
 
 .formulario h1 {
@@ -93,7 +93,7 @@ button {
     border-radius: 4px;
     color: #ffffff;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 15px;
     font-weight: bold;
     padding: 12px;
     width: 200px;
